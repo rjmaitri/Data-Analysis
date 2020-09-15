@@ -1,0 +1,78 @@
+<div align="center">
+ <marquee behavior="alternate" bgcolor="#bb3434" direction="left" height:="" 
+ loop="7" scrollamount="1" scrolldelay="2" width="100%">
+ <span style="font-size: 20px;color:#FFFFFF">
+ Intro to R and Data Frames!</span></marquee>
+</div>
+
+---
+title: "Homework 1"
+author: "Bob Bartolini"
+date: "9/18/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE)
+options(width = 60)
+local({
+  hook_output <- knitr::knit_hooks$get('output')
+  knitr::knit_hooks$set(output = function(x, options) {
+    if (!is.null(options$max.height)) options$attr.output <- c(
+      options$attr.output,
+      sprintf('style="max-height: %s;"', options$max.height)
+    )
+    hook_output(x, options)
+  })
+})
+```
+
+
+#  <span style="color: green;">  Let’s explore the dataset quakes looking at earthquakes off of Fiji. </span> 
+
+### 1. Load quakes with data(quakes). Show what’s there with str() and summary().
+
+```{r}
+#load the data for earthquakes off of Fiji
+data(quakes)
+#check the structure of the quakes dataset
+str(quakes)
+
+```
+
+```{r}
+#summarize the quakes data set
+summary(quakes)
+```
+
+### 2. Show the entirity of the column long.
+
+```{r, max.height = '150px'}
+#Extract the column long from quakes
+quakes$long
+
+```
+
+### 3. Hey, another useful function - unique()! Apply it to a vector, and you can see what are all of the unique values. It’s great for really digging into a problematic vector. 
+What unique stations are there? Use length() with unique() to determine how many stations there are.
+
+```{r, max.height = '150px'}
+
+#Extract the unique station ID's
+unique(quakes$stations)
+
+#Determine the amount of unique station ID's
+length(unique(quakes$stations))
+
+```
+
+
+## 4. Using range(), what is the range of depths where quakes occur?
+
+```{r}
+#Extract the range of depths where quakes occur
+range(quakes$depth)
+
+```
+
