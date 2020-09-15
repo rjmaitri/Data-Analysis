@@ -10,10 +10,11 @@ title: "Homework 1"
 author: "Bob Bartolini"
 date: "9/18/2020"
 output: html_document
+
 ---
 
 ```{r setup, include=FALSE}
-library(dplyr)
+
 knitr::opts_chunk$set(echo = TRUE)
 options(width = 60)
 local({
@@ -29,9 +30,11 @@ local({
 ```
 
 
-#  <span style="color: green;">  Let’s explore the dataset quakes looking at earthquakes off of Fiji. </span> 
 
-### 1. Load quakes with data(quakes). Show what’s there with str() and summary().
+#  <span style="color: green;">  Let’s explore the dataset quakes looking at earthquakes off of Fiji. </span> 
+# [**GIT**](https://github.com/rjmaitri/Data-Analysis/blob/master/01_Bartolini_Bob_2020.Rmd)
+
+#### 1. Load quakes with data(quakes). Show what’s there with str() and summary().
 
 ```{r}
 #load the data for earthquakes off of Fiji
@@ -46,7 +49,7 @@ str(quakes)
 summary(quakes)
 ```
 
-### 2. Show the entirity of the column long.
+#### 2. Show the entirity of the column long.
 
 ```{r, max.height = '150px'}
 #Extract the column long from quakes
@@ -54,8 +57,8 @@ quakes$long
 
 ```
 
-### 3. Hey, another useful function - unique()! Apply it to a vector, and you can see what are all of the unique values. It’s great for really digging into a problematic vector. 
-What unique stations are there? Use length() with unique() to determine how many stations there are.
+#### 3. Hey, another useful function - unique()! Apply it to a vector, and you can see what are all of the unique values. It’s great for really digging into a problematic vector. 
+#### What unique stations are there? Use length() with unique() to determine how many stations there are.
 
 ```{r, max.height = '150px'}
 
@@ -68,7 +71,7 @@ length(unique(quakes$stations))
 ```
 
 
-## 4. Using range(), what is the range of depths where quakes occur?
+#### 4. Using range(), what is the range of depths where quakes occur?
 
 ```{r}
 #Extract the range of depths where quakes occur
@@ -76,3 +79,16 @@ range(quakes$depth)
 
 ```
 
+#### Extra Credit
+E.C. Where was the earthquake of largest magnitude found? You’ll need to use come comparisons and the max() function for this in your indices instead of a number!
+
+```{r}
+
+#Extract the station with the highest magnitude earthquake
+quakes$stations[max(quakes$mag)]
+#Extract the latitude of that station
+quakes$lat[quakes$stations[max(quakes$mag)]]
+#Extract the longitude of the station
+quakes$long[quakes$stations[max(quakes$mag)]]
+
+```
